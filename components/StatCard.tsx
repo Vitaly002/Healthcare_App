@@ -1,3 +1,9 @@
+// StatusCard component displays a card with status information.
+// It includes an icon, a numerical count, and a label describing 
+// the status. The background color of the card changes based on 
+// the type of status, which can be "appointments", "pending", or 
+// "cancelled".
+
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -8,6 +14,8 @@ type StatCardProps = {
   icon: string;
 };
 
+// StatCard component renders a card with an icon, count, and label,
+// with styles and background color depending on the status type.
 export const StatCard = ({ count = 0, label, icon, type }: StatCardProps) => {
   return (
     <div

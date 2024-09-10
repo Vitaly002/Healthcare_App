@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { StatCard } from "@/components/StatCard";
-import { columns } from "@/components/table/columns";
-import { DataTable } from "@/components/table/DataTable";
-import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
+import { StatCard } from "@/components/StatCard"; // Custom component for displaying status card
+import { columns } from "@/components/table/columns"; // Column definitions for DataTable
+import { DataTable } from "@/components/table/DataTable"; // Component to render a table with data
+import { getRecentAppointmentList } from "@/lib/actions/appointment.actions"; // Function to fetch recent appointments
 
+// Admin Page Component
 const AdminPage = async () => {
+  // Fetch recent appointment data from the server
   const appointments = await getRecentAppointmentList();
 
   return (

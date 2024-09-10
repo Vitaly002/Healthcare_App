@@ -20,6 +20,11 @@ import {
 } from "@/components/ui/input-otp";
 import { decryptKey, encryptKey } from "@/lib/utils";
 
+// PasskeyModal component handles the admin passkey verification process.
+// It displays a modal prompting the user to enter a passkey to gain access
+// to the admin page. If the passkey matches the expected value, it is
+// encrypted and saved; otherwise, an error message is shown.
+
 export const PasskeyModal = () => {
   const router = useRouter();
   const path = usePathname();

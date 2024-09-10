@@ -11,6 +11,8 @@ type FileUploaderProps = {
   onChange: (files: File[]) => void;
 };
 
+// FileUploader component allows users to upload files either by dragging and dropping or by clicking to select files.
+// It displays the uploaded image preview if files are present, otherwise, it shows an upload prompt.
 export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     onChange(acceptedFiles);

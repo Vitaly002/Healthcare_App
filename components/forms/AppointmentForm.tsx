@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Indicates that this component uses client-side rendering
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -7,14 +7,14 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { SelectItem } from "@/components/ui/select";
-import { Doctors } from "@/constants";
-import {
+import { SelectItem } from "@/components/ui/select"; // Custom component for select dropdown
+import { Doctors } from "@/constants"; // List of doctors to populate the select dropdown
+import { // Functions to handle API requests
   createAppointment,
   updateAppointment,
 } from "@/lib/actions/appointment.actions";
-import { getAppointmentSchema } from "@/lib/validation";
-import { Appointment } from "@/types/appwrite.types";
+import { getAppointmentSchema } from "@/lib/validation"; // Validation schema for appointment form
+import { Appointment } from "@/types/appwrite.types"; // Type definition for appointment
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -22,6 +22,7 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 
+// AppointmentForm component: Handles creation, scheduling, and cancellation of appointments
 export const AppointmentForm = ({
   userId,
   patientId,
