@@ -1,6 +1,6 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "@hookform/resolvers/zod"; // Integrates Zod schema validation with React Hook Form for form validation.
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,14 @@ import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 
+/*
+  The PatientForm component handles the user registration process for patients. 
+  It uses React Hook Form with Zod for form validation, allowing the user to input 
+  their name, email, and phone number. On submission, the form data is validated 
+  and sent to the backend using the createUser function. If successful, the user 
+  is redirected to a patient registration page. The form also includes loading state 
+  management to disable the submit button while the form is being processed.
+*/
 export const PatientForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);

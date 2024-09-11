@@ -15,8 +15,12 @@ import {
 import { parseStringify } from "../utils";
 
 // CREATE APPWRITE USER
+// Function to create a new user in Appwrite.
+// It attempts to create a new user with the provided details.
+// If the user already exists (409 error), it retrieves the existing user details based on the email.
 export const createUser = async (user: CreateUserParams) => {
   try {
+    // Create new user with the provided email, phone, and name.
     // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
     const newuser = await users.create(
       ID.unique(),
@@ -25,11 +29,13 @@ export const createUser = async (user: CreateUserParams) => {
       undefined,
       user.name
     );
-
+    // Return user data in a parsed format.
     return parseStringify(newuser);
   } catch (error: any) {
     // Check existing user
+    // Handle user creation conflict (e.g., email already in use).
     if (error && error?.code === 409) {
+      // Retrieve existing user by email.
       const existingUser = await users.list([
         Query.equal("email", [user.email]),
       ]);
@@ -41,6 +47,8 @@ export const createUser = async (user: CreateUserParams) => {
 };
 
 // GET USER
+// Function to retrieve a user's details by userId.
+// Handles errors that occur during the retrieval process.
 export const getUser = async (userId: string) => {
   try {
     const user = await users.get(userId);
@@ -55,6 +63,8 @@ export const getUser = async (userId: string) => {
 };
 
 // REGISTER PATIENT
+// Function to register a new patient, including uploading an optional identification document.
+// The patient details are stored in the Appwrite database along with the provided document details.
 export const registerPatient = async ({
   identificationDocument,
   ...patient
@@ -94,8 +104,11 @@ export const registerPatient = async ({
 };
 
 // GET PATIENT
+// Function to retrieve a patient's details by userId.
+// Retrieves documents from the database that match the userId and returns the first result.
 export const getPatient = async (userId: string) => {
   try {
+    // Retrieve patient details by userId.
     const patients = await databases.listDocuments(
       DATABASE_ID!,
       PATIENT_COLLECTION_ID!,

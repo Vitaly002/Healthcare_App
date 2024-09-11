@@ -1,5 +1,6 @@
 import { Models } from "node-appwrite";
 
+// Represents a patient's information used in the registration form within the healthcare system.
 export interface Patient extends Models.Document {
   userId: string;
   name: string;
@@ -24,6 +25,7 @@ export interface Patient extends Models.Document {
   privacyConsent: boolean;
 }
 
+// Represents an appointment associated with a patient.
 export interface Appointment extends Models.Document {
   patient: Patient;
   schedule: Date;

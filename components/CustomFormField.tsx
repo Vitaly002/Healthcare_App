@@ -17,6 +17,12 @@ import { Input } from "./ui/input";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 
+/*
+  A flexible form field component designed to handle various input types in a form.
+  Utilizes `react-hook-form` for form state management and validation, and supports 
+  multiple field types including text inputs, text areas, phone inputs, checkboxes, 
+  date pickers, and selects.
+*/
 export enum FormFieldType {
   INPUT = "input",
   TEXTAREA = "textarea",
@@ -39,9 +45,9 @@ interface CustomProps {
   showTimeSelect?: boolean;
   children?: React.ReactNode;
   renderSkeleton?: (field: any) => React.ReactNode;
-  fieldType: FormFieldType;
+  fieldType: FormFieldType; // The component dynamically renders different types of form fields based on the `fieldType` prop
 }
-
+// RenderInput function handles rendering specific field types based on `fieldType`.
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
   switch (props.fieldType) {
     case FormFieldType.INPUT:

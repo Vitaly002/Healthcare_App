@@ -8,11 +8,16 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
+/*
+  The `SubmitButton` component is a customizable button designed for form submissions.
+  It displays a loading spinner when the `isLoading` prop is true, indicating that
+  a process is ongoing. Otherwise, it shows the button's child elements, such as text or icons.
+*/
 const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
   return (
     <Button
       type="submit"
-      disabled={isLoading}
+      disabled={isLoading} // A boolean flag that determines if the button should display a loading spinner
       className={className ?? "shad-primary-btn w-full"}
     >
       {isLoading ? (
@@ -27,7 +32,7 @@ const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
           Loading...
         </div>
       ) : (
-        children
+        children // The content to display inside the button when it's not loading
       )}
     </Button>
   );

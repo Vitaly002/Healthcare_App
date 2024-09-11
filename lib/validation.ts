@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+// Validation schema for user form
+// This schema validates the basic user information
 export const UserFormValidation = z.object({
   name: z
     .string()
@@ -11,6 +13,8 @@ export const UserFormValidation = z.object({
     .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
 });
 
+// Validation schema for patient form
+// This schema validates detailed patient information
 export const PatientFormValidation = z.object({
   name: z
     .string()
@@ -76,6 +80,7 @@ export const PatientFormValidation = z.object({
     }),
 });
 
+// Validation schema for creating an appointment
 export const CreateAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
   schedule: z.coerce.date(),
@@ -87,6 +92,7 @@ export const CreateAppointmentSchema = z.object({
   cancellationReason: z.string().optional(),
 });
 
+// Validation schema for scheduling an appointment
 export const ScheduleAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
   schedule: z.coerce.date(),
@@ -95,6 +101,7 @@ export const ScheduleAppointmentSchema = z.object({
   cancellationReason: z.string().optional(),
 });
 
+// Validation schema for canceling an appointment
 export const CancelAppointmentSchema = z.object({
   primaryPhysician: z.string().min(2, "Select at least one doctor"),
   schedule: z.coerce.date(),
@@ -106,6 +113,7 @@ export const CancelAppointmentSchema = z.object({
     .max(500, "Reason must be at most 500 characters"),
 });
 
+// Function to get the appropriate appointment schema based on the action type
 export function getAppointmentSchema(type: string) {
   switch (type) {
     case "create":

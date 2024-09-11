@@ -4,6 +4,13 @@ import Link from "next/link";
 import { PatientForm } from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 // Home Page
+/* 
+   This component represents the home page of the application. 
+   It displays a patient form for users to fill out, and conditionally displays an admin passkey modal 
+   if the 'admin' query parameter is set to "true". 
+   The component includes a header with a logo, a form for patients, and a footer with copyright info 
+   and an admin link. Additionally, it displays an onboarding image on the right side of the page.
+*/
 const Home = ({ searchParams }: SearchParamProps) => {
   const isAdmin = searchParams?.admin === "true";
 
