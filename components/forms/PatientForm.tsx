@@ -44,7 +44,7 @@ export const PatientForm = () => {
         email: values.email,
         phone: values.phone,
       };
-
+      // Calling createUser function to register a new user in the Appwrite backend
       const newUser = await createUser(user);
 
       if (newUser) {
