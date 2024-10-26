@@ -13,8 +13,8 @@ const AdminPage = async () => {
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
-      <header className="admin-header">
-        <Link href="/" className="cursor-pointer">
+      <header className="admin-header flex items-center">
+        <Link href="/" className="cursor-pointer flex items-center space-x-2">
           <Image
             src="/assets/icons/logo-full.svg"
             height={32}
@@ -22,9 +22,12 @@ const AdminPage = async () => {
             alt="logo"
             className="h-8 w-fit"
           />
+          <span className="text-gray-100 font-bold text-sm">← Return</span>
         </Link>
 
-        <p className="text-16-semibold">Admin Dashboard</p>
+        <Link href="/admin" className="cursor-pointer">
+          <p className="text-16-semibold">Admin Dashboard</p>
+        </Link>
       </header>
 
       <main className="admin-main">
